@@ -5,6 +5,9 @@ jobs:
       image: ubuntu-2004:202107-02 
     steps:
       - run: lsb_release -a
+      - run: ls
+      - run: docker version
+      - run: python --version
 workflows:
   build_and_test:
     jobs:
