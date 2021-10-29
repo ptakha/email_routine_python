@@ -1,0 +1,11 @@
+version: 2.1
+jobs:
+  build:
+    machine:
+      image: ubuntu2004:202107-02 
+    steps:
+      - run: lsb_release -a
+workflows:
+  build_and_test:
+    jobs:
+      - build

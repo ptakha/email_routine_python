@@ -1,6 +1,0 @@
-language: python
-dist: focal
-services:
-  - docker
-script:
-  - lsb_release -a
