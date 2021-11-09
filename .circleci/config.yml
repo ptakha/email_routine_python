@@ -6,22 +6,9 @@ jobs:
     working_directory: ./email_routine_python
     steps:
       - checkout
-      - run:
-        name: check enviroment
-        command: echo $AUTH_STRING
-      - run:
-        name: install dependencies
-        command: pip install -r requirements
-      - run:
-        name: sending test email
-        command: python email_routine.py
-  test:
-    machine:
-      image: ubuntu-2004:202107-02
-    steps:
-      - run:
-        name: tests
-        command: pytest
+      - run: echo $AUTH_STRING
+      - run: pip install -r requirements
+      - run: python email_routine.py
 workflows:
   build_and_test:
     jobs:
