@@ -6,7 +6,6 @@ jobs:
     steps:
       - checkout
       - run: echo $AUTH_STRING
-      - run: pip install -r requirements
       - run: python email_routine.py
 workflows:
   build_and_test:
