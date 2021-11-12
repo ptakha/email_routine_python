@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  test:
+    image: test
+    environment:
+      login_pass : ${login_pass}
+      login_oauth : ${login_oauth}
+      some_password : ${some_password}
+      another_password : ${another_password}
+    command: pytest -vs
