@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  test:
+  vm_test:
     machine:
       image: ubuntu-2004:202107-02
     steps:
@@ -9,7 +9,19 @@ jobs:
       - run: python3 -m pip install --upgrade certifi 
       - run: pip3 install -r requirements
       - run: pytest -vs
+  docker_test:
+    machine:
+      image: ubuntu-2004:202107-02
+    steps:
+      - checkout
+      - setup_remote_docker:
+        version: 20.10.7
+        docker_layer_caching: true
+      - run: docker build --tag=test .
+      - run: docker run -e login_pass=$login_pass -e some_password=$some_password -e login_oauth=$login_oauth -e another_password=$another_password test
+
 workflows:
   build_and_test:
     jobs:
-      - test
+      - vm_test
+      - docker_test
